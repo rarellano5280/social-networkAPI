@@ -9,11 +9,15 @@ const reactionSchema = new Schema(
             default: () => new Types.ObjectId(),
         },
 
-        reactionBody: { type: String, required: true, maxLength: 200},
+        reactionBody: { type: String, 
+            required: true, 
+            maxLength: 280},
 
-        username: { type: String, required: true},
+        username: { type: String, 
+            required: true},
 
-        dateCreated: { type: Date, default: Date.now, get: dateCreatedVal => moment(dateCreatedVal).format("MMM DD, YYYY [at] hh:mm a")},
+        dateCreated: { type: Date, default: Date.now, 
+            get: dateCreatedVal => moment(dateCreatedVal).format("MMM DD, YYYY [at] hh:mm a")},
     },
     {
         toJSON: {
@@ -26,11 +30,16 @@ const reactionSchema = new Schema(
 
 const ThoughtSchema = new Schema(
     {
-        thoughtString: { type: String, required: true, minLength: 1, maxLength: 200},
+        thoughtString: { type: String, 
+            required: true, 
+            minLength: 1, 
+            maxLength: 280},
 
-        dateCreated: { type: Date, default: Date.now, get: dateCreatedVal => moment(dateCreatedVal).format("MMM DD, YYYY [at] hh:mm a")},
+        dateCreated: { type: Date, default: Date.now,
+             get: dateCreatedVal => moment(dateCreatedVal).format("MMM DD, YYYY [at] hh:mm a")},
 
-        username: { type: String, required: true},
+        username: { type: String, 
+            required: true},
 
         reactions: [reactionSchema],
     },
