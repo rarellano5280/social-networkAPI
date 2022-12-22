@@ -3,18 +3,18 @@ const { User, Thought } = require('../models');
 module.exports = {
   // Get all thoughts
   getThought(req, res) {
-    Course.find()
-      .then((courses) => res.json(courses))
+    Thought.find()
+      .then((thought) => res.json(thought))
       .catch((err) => res.status(500).json(err));
   },
   // Get a single thought
-  getSingleCourse(req, res) {
-    Course.findOne({ _id: req.params.courseId })
+  getSingleThought(req, res) {
+    Thought.findOne({ _id: req.params.thoughtId })
       .select('-__v')
-      .then((course) =>
-        !course
+      .then((thought) =>
+        !thought
           ? res.status(404).json({ message: 'No thought with that ID' })
-          : res.json(course)
+          : res.json(thought)
       )
       .catch((err) => res.status(500).json(err));
   },
